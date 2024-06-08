@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function startTimer() {
         startTime = new Date();
         timerInterval = setInterval(updateTimer, 1000);
-        console.log("Timer started"); // 디버그용 로그 추가
+        console.log('Timer started'); // 디버그용 로그 추가
     }
 
     function updateTimer() {
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const minutes = String(elapsedTime.getUTCMinutes()).padStart(2, '0');
         const seconds = String(elapsedTime.getUTCSeconds()).padStart(2, '0');
         document.getElementById('timer').textContent = `${hours}:${minutes}:${seconds}`;
-        console.log("Timer updated:", `${hours}:${minutes}:${seconds}`); // 디버그용 로그 추가
+        console.log('Timer updated:', `${hours}:${minutes}:${seconds}`); // 디버그용 로그 추가
     }
 
     function stopTimer() {
@@ -52,23 +52,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 'X-CSRFToken': getCsrfToken(),
             },
             body: JSON.stringify({
-                'time_taken': timeTakenStr,
+                time_taken: timeTakenStr,
             }),
         })
-        .then(response => {
-            console.log('Fetch response:', response); // 디버그 로그 추가
-            return response.json();
-        })
-        .then(data => {
-            if (data.success) {
-                console.log('Fetch success:', data); // 디버그 로그 추가
-                window.location.href = "/win/"; // win.html로 이동
-            } else {
-                console.error('Error recording time:', data.error); // 에러 로그 추가
-                alert('Error recording time');
-            }
-        })
-        .catch(error => console.error('Fetch error:', error)); // Fetch 에러 추가
+            .then((response) => {
+                console.log('Fetch response:', response); // 디버그 로그 추가
+                return response.json();
+            })
+            .then((data) => {
+                if (data.success) {
+                    console.log('Fetch success:', data); // 디버그 로그 추가
+                    window.location.href = '/win/'; // win.html로 이동
+                } else {
+                    console.error('Error recording time:', data.error); // 에러 로그 추가
+                    alert('Error recording time');
+                }
+            })
+            .catch((error) => console.error('Fetch error:', error)); // Fetch 에러 추가
     }
 
     function getCsrfToken() {
@@ -78,12 +78,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const originalShipmanSrc = shipman.src; // 원래 shipman 이미지 경로 저장
-    const originalShipmanStyle = { // 원래 shipman 스타일 저장
+    const originalShipmanStyle = {
+        // 원래 shipman 스타일 저장
         width: shipman.style.width,
         height: shipman.style.height,
         bottom: shipman.style.bottom,
         left: shipman.style.left,
-        top: shipman.style.top
+        top: shipman.style.top,
     };
 
     items.forEach((item) => {
@@ -299,35 +300,35 @@ document.addEventListener('DOMContentLoaded', () => {
         if (bank === 'left-bank') {
             switch (element.id) {
                 case 'wolf':
-                    element.style.bottom = '120px';
-                    element.style.left = '240px';
+                    element.style.bottom = '110px';
+                    element.style.left = '250.5px';
                     break;
                 case 'sheep':
-                    element.style.bottom = '60px';
-                    element.style.left = '200px';
+                    element.style.bottom = '24px';
+                    element.style.left = '170px';
                     break;
                 case 'cabbage':
-                    element.style.bottom = '0';
-                    element.style.left = '125px';
+                    element.style.bottom = '-62px';
+                    element.style.left = '85px';
                     break;
                 case 'min':
-                    element.style.bottom = '0';
-                    element.style.left = '125px';
+                    element.style.bottom = '5px';
+                    element.style.left = '110px';
                     break;
             }
         } else if (bank === 'right-bank') {
             switch (element.id) {
                 case 'wolf':
                     element.style.bottom = '100px';
-                    element.style.left = '0px'; // 반대편 위치 설정
+                    element.style.left = '10px'; // 반대편 위치 설정
                     break;
                 case 'sheep':
-                    element.style.bottom = '60px';
-                    element.style.left = '80px'; // 반대편 위치 설정
+                    element.style.bottom = '37px';
+                    element.style.left = '92px'; // 반대편 위치 설정
                     break;
                 case 'cabbage':
-                    element.style.bottom = '0';
-                    element.style.left = '140px'; // 반대편 위치 설정
+                    element.style.bottom = '-40px';
+                    element.style.left = '155px'; // 반대편 위치 설정
                     break;
                 case 'min':
                     element.style.bottom = '0';
@@ -341,10 +342,12 @@ document.addEventListener('DOMContentLoaded', () => {
         element.style.bottom = '11px';
         switch (element.id) {
             case 'wolf':
-                element.style.left = '0px';
+                element.style.left = '-31px';
+                element.style.bottom = '20px';
                 break;
             case 'sheep':
-                element.style.left = '10px';
+                element.style.left = '-22px';
+                element.style.bottom = '20px';
                 shipman.src = '/static/images/minwithbang.png'; // sheep을 배에 태우면 이미지를 변경
                 shipman.style.width = originalShipmanStyle.width;
                 shipman.style.height = originalShipmanStyle.height;
@@ -353,13 +356,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 shipman.style.top = originalShipmanStyle.top;
                 break;
             case 'cabbage':
-                element.style.left = '0';
+                element.style.left = '-26px';
+                element.style.bottom = '22px';
                 shipman.src = '/static/images/minwithnew.png'; // cabbage를 배에 태우면 이미지를 변경
-                shipman.style.width = '100px'; // 커스텀 사이즈 설정
-                shipman.style.height = '120px'; // 커스텀 사이즈 설정
+                shipman.style.width = '130px'; // 커스텀 사이즈 설정
+                shipman.style.height = '150px'; // 커스텀 사이즈 설정
                 shipman.style.bottom = ''; // 기존 bottom 값 초기화
-                shipman.style.top = '-36px'; // 커스텀 위치 설정
-                shipman.style.left = '120px'; // 커스텀 위치 설정
+                shipman.style.top = '-75px'; // 커스텀 위치 설정
+                shipman.style.left = '115px'; // 커스텀 위치 설정
                 break;
         }
         element.style.margin = '5px';

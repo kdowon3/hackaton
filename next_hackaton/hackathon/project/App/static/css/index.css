@@ -55,9 +55,9 @@ body {
 #boat {
     position: absolute;
     bottom: -25px;
-    left: 0;
-    width: 230px;
-    height: 200px;
+    left: -25px;
+    width: 270px;
+    height: 240px;
 }
 
 #shipman {
@@ -150,26 +150,29 @@ body {
 }
 
 #min {
-    width: 100px;
-    height: 100px;
+    width: 130px;
+    height: 130px;
     position: absolute;
-    top: -17px;
-    left: 125px;
+    bottom: 25px;
+    left: 115px;
 }
 
 #cabbage {
     width: 125px;
+    left: 90px;
+    bottom: -60px;
 }
 
 #sheep {
-    left: 200px;
-    bottom: 60px;
+    left: 175px;
+    bottom: 30px;
+    width: 125px;
 }
 
 #wolf {
-    width: 125px;
-    left: 240px;
-    bottom: 120px;
+    width: 145px;
+    left: 255px;
+    bottom: 115px;
 }
 
 @font-face {

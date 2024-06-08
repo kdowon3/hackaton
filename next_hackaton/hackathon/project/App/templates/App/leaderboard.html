@@ -121,12 +121,14 @@
                 </thead>
                 <tbody>
                     {% for record in records %}
+                    {% if forloop.counter <= 3 %}
                     <tr>
                         <td>{{ forloop.counter }}</td>
                         <td>{{ record.user }}</td>
                         <td>{{ record.time_taken }}</td>
                         <td>{{ record.date }}</td>
                     </tr>
+                    {% endif %}
                     {% endfor %}
                 </tbody>
             </table>

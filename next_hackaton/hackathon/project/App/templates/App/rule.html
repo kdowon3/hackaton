@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Game Rules</title>
+        {% load static %}
+        <style>
+            @font-face {
+                font-family: 'DNFBitBitv2';
+                font-style: normal;
+                font-weight: 400;
+                src: url('//cdn.df.nexon.com/img/common/font/DNFBitBitv2.otf') format('opentype');
+            }
+
+            @font-face {
+                font-family: 'CookieRun-Regular';
+                src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff')
+                    format('woff');
+                font-weight: normal;
+                font-style: normal;
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+                background: url('{% static "images/back.jpg" %}') no-repeat center center fixed;
+                background-size: cover;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                width: 100vw;
+                font-family: Arial, sans-serif;
+                color: white;
+                text-align: center;
+                font-family: 'DNFBitBitv2', Arial, sans-serif;
+            }
+
+            .rules-box {
+                width: 80%;
+                max-width: 900px;
+                padding: 20px;
+                background-color: rgba(255, 255, 255, 0.95);
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+                text-align: center;
+                color: black; /* 텍스트 색상 변경 */
+            }
+
+            .rules-content {
+                margin-bottom: 20px;
+            }
+
+            p {
+                font-family: 'CookieRun-Regular', Arial, sans-serif;
+                font-size: 1.2em; /* 폰트 크기 설정 */
+                line-height: 1.6; /* 줄 간격 설정 */
+                color: #333; /* 어두운 텍스트 색상 */
+                margin: 20px 0;
+            }
+
+            h1 {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-family: 'DNFBitBitv2', Arial, sans-serif;
+                color: #ffff33; /* 더 밝은 노란색 글씨 */
+                -webkit-text-stroke: 1px #ff1493;
+                text-shadow: -1px -1px 0 #ff66b2, -2px -2px 0 #ff66b2, -3px -3px 0 #ff66b2,
+                    -4px -4px 0 #ff66b2, -5px -5px 0 #ff66b2;
+            }
+
+            .highlight {
+                font-weight: bold;
+                color: #d9534f; /* 강조된 텍스트 색상 */
+                border-radius: 5px;
+                padding: 5px;
+                margin: 10px 0;
+                display: inline-block;
+            }
+
+            .start-button {
+                display: inline-block;
+                padding: 15px 25px;
+                margin: 10px;
+                font-size: 2em;
+                color: black; /* 버튼 글씨 색상 */
+                background-color: white; /* 버튼 배경 색상 */
+                border: 5px solid #000; /* 테두리 추가 */
+                border-radius: 10px; /* 둥근 테두리 */
+                cursor: pointer;
+                text-decoration: none;
+                font-family: 'DNFBitBitv2', Arial, sans-serif;
+                letter-spacing: 0.2em; /* 버튼 폰트 자간 설정 */
+                box-shadow: 4px 4px 0 #000; /* 그림자 추가 */
+                transition: transform 0.2s ease; /* 애니메이션 추가 */
+            }
+
+            .start-button:hover {
+                background-color: #ffff99; /* 호버 시 노란색 계열 배경 색상 */
+                transform: translateY(-5px); /* 호버 시 이동 효과 */
+            }
+        </style>
+    </head>
+    <body>
+        <div class="rules-box">
+            <div class="rules-content">
+                <h1>Game Rules</h1>
+                <p>
+                    뉴진스, 방시혁, 에스파가 맞다이 강가에 서 있습니다.</br> 당신의 목표는 이 셋을 강 건너편으로
+                    옮겨 하이브의 평화를 만드는 것입니다.</br>강을 건너기 위해선 민희진이 이끄는 배에 타야 합니다.</br>하지만
+                    이때 몇 가지 규칙이 있습니다.
+                </p>
+                <p class="highlight">
+                    1. 배에는 두 공간만 있으며, 뱃사공인 민희진은 반드시 배에 타고 있어야 합니다.</br>
+                    2. 어느 한쪽에 [방시혁]과 [뉴진스]만 남게 되면, 미션 실패</br>
+                    3. 어느 한쪽에 [방시혁]과 [에스파]만 남게 되면, 미션 실패
+                </p>
+                <p>평화, 만드실 수 있죠?</p>
+            </div>
+            <button class="start-button" onclick="startGame()">Start Game</button>
+        </div>
+
+        <script>
+            function startGame() {
+                window.location.href = '{% url 'index' %}'; // 실제 게임 페이지로 이동
+            }
+        </script>
+    </body>
+</html>

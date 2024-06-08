@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Game Clear!</title>
+        <style>
+            @font-face {
+                font-family: 'DNFBitBitv2';
+                font-style: normal;
+                font-weight: 400;
+                src: url('//cdn.df.nexon.com/img/common/font/DNFBitBitv2.otf') format('opentype');
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+                background: url('{% static 'images/gameclear.png' %}') no-repeat center center fixed;
+                background-size: cover;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                width: 100vw;
+                font-family: Arial, sans-serif;
+                color: white;
+                text-align: center;
+                font-family: 'DNFBitBitv2', Arial, sans-serif;
+                position: relative;
+            }
+
+            .button-container {
+                position: absolute;
+                bottom: 50px;
+                display: flex;
+                gap: 20px; /* 버튼 사이의 간격 */
+            }
+
+            .button,
+            .start-button {
+                padding: 10px 20px;
+                font-size: 1.5em;
+                color: black; /* 버튼 글씨 색상 */
+                background-color: white; /* 버튼 배경 색상 */
+                border: 5px solid #000; /* 테두리 추가 */
+                border-radius: 10px; /* 둥근 테두리 */
+                cursor: pointer;
+                text-decoration: none;
+                font-family: 'DNFBitBitv2', Arial, sans-serif;
+                letter-spacing: 0.2em; /* 버튼 폰트 자간 설정 */
+                box-shadow: 4px 4px 0 #000; /* 그림자 추가 */
+                transition: transform 0.2s ease; /* 애니메이션 추가 */
+            }
+
+            .button:hover,
+            .start-button:hover {
+                background-color: #ffff99; /* 호버 시 노란색 계열 배경 색상 */
+                transform: translateY(-5px); /* 호버 시 이동 효과 */
+            }
+        </style>
+    </head>
+    <body>
+        <video id="background-audio" width="0" height="0" src="{% static 'audio/winmusic.mp4' %}"></video>
+        <script>
+            window.onload = function () {
+                setTimeout(function () {
+                    document.getElementById('background-audio').play();
+                }, 500); // 500 milliseconds = 0.5 seconds
+            };
+        </script>
+        <div class="button-container">
+            <button class="button" onclick="location.href='{% url 'leaderboard' %}'">순위 보기</button>
+            <button class="start-button" onclick="location.href='{% url 'start' %}'">홈으로</button>
+        </div>
+    </body>
+</html>

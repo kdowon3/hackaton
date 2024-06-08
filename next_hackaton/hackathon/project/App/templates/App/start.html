@@ -1,0 +1,171 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>늑대, 양, 양배추 게임</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <style>
+        @font-face {
+            font-family: 'DNFBitBitv2';
+            font-style: normal;
+            font-weight: 400;
+            src: url('//cdn.df.nexon.com/img/common/font/DNFBitBitv2.otf') format('opentype');
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('{% static 'images/back.jpg' %}') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            font-family: 'DNFBitBitv2', Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'DNFBitBitv2', Arial, sans-serif;
+            color: #ffff33; /* 더 밝은 노란색 글씨 */
+            -webkit-text-stroke: 1px #ff1493;
+            text-shadow: -1px -1px 0 #ff66b2, /* 더 밝은 핑크색 그림자 */ -2px -2px 0 #ff66b2, -3px -3px 0 #ff66b2,
+                -4px -4px 0 #ff66b2, -5px -5px 0 #ff66b2;
+        }
+
+        .title span {
+            display: inline-block;
+        }
+
+        .title span:nth-child(1),
+        .title span:nth-child(8) {
+            font-size: 5.625em; /* 기존 3.75em의 1.5배 */
+        }
+
+        .title span:nth-child(2),
+        .title span:nth-child(7) {
+            font-size: 4.95em; /* 기존 3.3em의 1.5배 */
+        }
+
+        .title span:nth-child(3),
+        .title span:nth-child(6) {
+            font-size: 4.5em; /* 기존 3em의 1.5배 */
+        }
+
+        .title span:nth-child(4),
+        .title span:nth-child(5) {
+            font-size: 4.05em; /* 기존 2.7em의 1.5배 */
+        }
+
+        .title span.space {
+            width: 30px; /* '를'과 '지' 사이에 여백 추가 */
+        }
+
+        .title span.exclamation {
+            font-size: 6.75em; /* 기존 4.5em의 1.5배 */
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 25px;
+            margin: 10px;
+            font-size: 3em;
+            color: black; /* 버튼 글씨 색상 */
+            background-color: white; /* 버튼 배경 색상 */
+            border: 5px solid #000; /* 테두리 추가 */
+            border-radius: 10px; /* 둥근 테두리 */
+            cursor: pointer;
+            text-decoration: none;
+            font-family: 'DNFBitBitv2', Arial, sans-serif;
+            letter-spacing: 0.2em; /* 버튼 폰트 자간 설정 */
+            box-shadow: 4px 4px 0 #000; /* 그림자 추가 */
+            transition: transform 0.2s ease; /* 애니메이션 추가 */
+        }
+
+        .button:hover {
+            background-color: #ffff99; /* 호버 시 배경 색상 변경 */
+            transform: translateY(-5px); /* 호버 시 이동 효과 */
+        }
+
+        .login-container {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            font-size: 2em;
+        }
+
+        .login-container label {
+            margin-right: 10px;
+        }
+
+        .login-container input[type="text"] {
+            padding: 10px;
+            font-size: 1em;
+            border: 2px solid #000;
+            border-radius: 5px;
+            box-shadow: 2px 2px 0 #000;
+            margin-right: 10px;
+        }
+
+        .login-container button {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: black; /* 버튼 글씨 색상 */
+            background-color: white; /* 버튼 배경 색상 */
+            border: 2px solid #000; /* 테두리 추가 */
+            border-radius: 5px; /* 둥근 테두리 */
+            cursor: pointer;
+            font-family: 'DNFBitBitv2', Arial, sans-serif;
+            box-shadow: 2px 2px 0 #000; /* 그림자 추가 */
+            transition: transform 0.2s ease; /* 애니메이션 추가 */
+        }
+
+        .login-container button:hover {
+            background-color: #ffff99; /* 호버 시 배경 색상 변경 */
+            transform: translateY(-3px); /* 호버 시 이동 효과 */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">
+            <span>뉴</span>
+            <span>진</span>
+            <span>스</span>
+            <span>를</span>
+            <span class="space"></span>
+            <span>지</span>
+            <span>켜</span>
+            <span>라</span>
+            <span class="exclamation">!</span>
+        </h1>
+        {% if username %}
+            <button class="button" onclick="location.href='{% url 'rules' %}'">게임설명</button>
+            <button class="button" onclick="location.href='{% url 'index' %}'">게임시작</button>
+            <button class="button" onclick="location.href='{% url 'logout' %}'">로그아웃</button>
+        {% else %}
+        <div class="login-container">
+            <form method="POST" action="">
+                {% csrf_token %}
+                <label for="username">이름:</label>
+                <input type="text" id="username" name="username" required>
+                <button type="submit">시작</button>
+            </form>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>늑대, 양, 양배추 게임</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <div class="top-container">
+        <div id="timer-container">
+            <span id="timer">00:00:00</span>
+        </div>
+    </div>
+    <div id="game-container">
+        <div id="left-bank" class="bank">
+            <img src="{% static 'images/aespa.png' %}" alt="에스파" id="wolf" class="draggable">
+            <img src="{% static 'images/bang.png' %}" alt="뱅" id="sheep" class="draggable">
+            <img src="{% static 'images/newjeans.png' %}" alt="뉴진스" id="cabbage" class="draggable">
+        </div>
+        <div id="river">
+            <div id="boat-container" class="left">
+                <img src="{% static 'images/boat.png' %}" alt="배" id="boat">
+                <img src="{% static 'images/min.png' %}" alt="민희진" id="min">
+            </div>
+        </div>
+        <div id="right-bank" class="bank"></div>
+    </div>
+    <button id="move-button" class="button">이동</button>
+    <button id="restart" class="button">재시작</button>
+    <form id="csrf-form">
+        {% csrf_token %}
+    </form>
+    <script src="{% static 'js/index.js' %}"></script>
+</body>
+</html>
